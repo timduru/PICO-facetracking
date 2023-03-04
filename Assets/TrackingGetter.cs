@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.UI;
 using Unity.XR.PXR;
+using UDP;
 
 public class TrackingGetter : MonoBehaviour {
     /*
@@ -13,8 +14,13 @@ public class TrackingGetter : MonoBehaviour {
     public bool useAudio = true;
 
     [SerializeField] private Text logger;
-    
-    void Start() { }
+
+    private UDPSocket _send;
+
+    void Start() {
+        this._send = new UDPSocket();
+        this._send.Client("192.168.1.101", 27000);
+    }
     
     void Update()
     {
@@ -22,5 +28,6 @@ public class TrackingGetter : MonoBehaviour {
         bool result = PXR_EyeTracking.GetCombineEyeGazeVector(out v);
         if (!result) return;
         logger.text = v.ToString();
+        this._send.Send(v.ToString());
     }
 }
