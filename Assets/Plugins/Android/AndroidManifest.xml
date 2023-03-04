@@ -22,6 +22,6 @@
             </intent-filter>
             <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
         </activity>
-        <service android:name=".FacetrackingSender"/>
+        <service android:name="com.rogermiranda1000.pico_facetracking.FacetrackingSender" android:enabled="true" android:exported="true" />
     </application>
 </manifest>

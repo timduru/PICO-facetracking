@@ -16,21 +16,5 @@ public final class FacetrackingSenderStarter {
 
     public static void StartCheckerService() {
         myActivity.startService(new Intent(myActivity, FacetrackingSender.class));
-        
-        try {
-            final UDPSocket send = new UDPSocket();
-            send.Client("192.168.1.101", 27000);
-
-            new Thread(() -> {
-                while (true) {
-                    try {
-                        send.Send("hello 1?");
-                        Thread.sleep(5000);
-                    } catch (Exception e) {}
-                }
-            }).start();
-        } catch (Exception ex) {
-            System.err.printf(ex.toString());
-        }
     }
 }

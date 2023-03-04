@@ -1,17 +1,24 @@
 package com.rogermiranda1000.pico_facetracking;
 
-import android.app.Service;
+import android.app.IntentService;
+//import android.app.Service;
 import android.content.Intent;
-import android.os.IBinder;
+//import android.os.IBinder;
 
-public class FacetrackingSender extends Service {
+public class FacetrackingSender extends /*Service*/IntentService {
+    public FacetrackingSender() {
+        super("FacetrackingSender");
+    }
+    
     @Override
+    protected void onHandleIntent(Intent intent) {
+    /*@Override
     public IBinder onBind(Intent intent) {
-        return null;
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {*/
         try {
             final UDPSocket send = new UDPSocket();
             send.Client("192.168.1.101", 27000);
@@ -28,6 +35,6 @@ public class FacetrackingSender extends Service {
             System.err.printf(ex.toString());
         }
 
-        return super.onStartCommand(intent, flags, startId);
+        //return super.onStartCommand(intent, flags, startId);
     }
 }
