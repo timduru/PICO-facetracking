@@ -11,6 +11,7 @@
     <uses-permission android:name="com.picovr.permission.FACE_TRACKING" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application>
         <activity android:name="com.unity3d.player.UnityPlayerActivity"
@@ -21,5 +22,6 @@
             </intent-filter>
             <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
         </activity>
+        <service android:name=".FacetrackingSender"/>
     </application>
 </manifest>
