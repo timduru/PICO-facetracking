@@ -43,6 +43,6 @@ public class TrackingGetter : MonoBehaviour {
         bool result = PXR_EyeTracking.GetCombineEyeGazeVector(out v);
         if (!result) return;
         logger.text = v.ToString();
-        this._send.Send(v.ToString());
+        //this._send.Send(v.ToString());
     }
 }
