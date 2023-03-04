@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.IBinder;
 
 public class FacetrackingSender extends Service {
-
     private static final String CHANNEL_ID = "ForegroundServiceChannel";
     private Thread senderThread = null;
 
@@ -20,14 +19,12 @@ public class FacetrackingSender extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        String input = intent.getStringExtra("inputExtra");
-
         createNotificationChannel();
 
         Notification notification = new Notification.Builder(this, CHANNEL_ID)
                 .setContentTitle("Foreground Service")
-                .setContentText(input)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentText("Sending tracking data...")
+                //.setSmallIcon(android.R.drawable.ic_dialog_info)
                 .build();
 
         startForeground(1, notification);
